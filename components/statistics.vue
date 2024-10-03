@@ -11,18 +11,20 @@
   </div>
   <div>
     <!-- Present reason and proposal for each criterion inside expandable/collapsible cards -->
-    <div v-for="(item, index) in criteria" :key="index" class="card">
-      <div
-        class="card-header"
-        @click="toggleCard(index)"
-        style="cursor: pointer"
-      >
-        <h3>{{ item.name }}</h3>
-      </div>
-      <!-- Conditional rendering of reason and proposal when the card is expanded -->
-      <div v-if="expandedIndex === index" class="card-body">
-        <p><strong>Reason:</strong> {{ item.reason }}</p>
-        <p><strong>Proposal:</strong> {{ item.proposal }}</p>
+    <div class="card-container">
+      <div v-for="(item, index) in criteria" :key="index" class="card">
+        <div
+          class="card-header"
+          @click="toggleCard(index)"
+          style="cursor: pointer"
+        >
+          <h3>{{ item.name }}</h3>
+        </div>
+        <!-- Conditional rendering of reason and proposal when the card is expanded -->
+        <div v-if="expandedIndex === index" class="card-body">
+          <p><strong>Reason:</strong> {{ item.reason }}</p>
+          <p><strong>Proposal:</strong> {{ item.proposal }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -148,25 +150,36 @@ function toggleCard(index) {
 </script>
 
 <style scoped>
+.card-container {
+  flex-direction: column;
+  align-items: flex-start;
+}
 .card {
   margin: 20px auto;
-  padding: 15px;
-  border: 1px solid #ddd;
+  padding: 20px;
   border-radius: 8px;
-  max-width: 600px;
+  max-width: 50vw;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.116);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card-header {
-  background-color: #f5f5f5;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  border-radius: 8px 8px 0 0;
+  background-color: #e6a9688b;
+  padding: 12px;
+  border-radius: 8px 8px;
   font-size: 18px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .card-body {
   padding: 10px;
   font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
 }
 </style>

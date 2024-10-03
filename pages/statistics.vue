@@ -7,4 +7,9 @@
 
 <script lang="ts" setup></script>
 
-<style></style>
+<style>
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+}
+</style>
