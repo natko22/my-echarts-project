@@ -1,75 +1,60 @@
-# Nuxt 3 Minimal Starter
+# 📊 ECharts Nuxt.js Statistics Dashboard
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![Dashboard Screenshot](/public//Screenshot%202024-10-03%20at%2019.00.40.png)
 
-## Setup
+This project is a Nuxt.js application that visualizes data using ECharts. It displays various statistics in a bar chart, calculates and shows the average score in a circular chart, and presents detailed reason and proposal information for each criterion in a clean and responsive layout.
 
-Make sure to install the dependencies:
+## 🚀 Features
 
-```bash
-# npm
-npm install
+- Bar Chart: Displays the score of various criteria using ECharts.
+- Average Score Circular Chart: Calculates the average score across all criteria and displays it as a percentage in a circular progress chart.
+- Reason & Proposal: Clearly shows the reason and proposal for each criterion in a responsive card layout.
 
-# pnpm
-pnpm install
+## 📦 Tech Stack
 
-# yarn
-yarn install
+- Nuxt.js.
+- ECharts: A powerful charting library for building interactive visualizations.
+- JavaScript.
 
-# bun
-bun install
-```
+## 📑 Main Task
 
-## Development Server
+The main tasks for this project were:
 
-Start the development server on `http://localhost:3000`:
+1. Using ECharts to display a bar chart visualizing scores from a JSON dataset.
+2. Adding an average score represented as a circular chart in the center of the dashboard.
+3. Displaying reasons and proposals for each criterion in a visually appealing card format.
 
-```bash
-# npm
-npm run dev
+## 📦 How to Install and Run the Project
 
-# pnpm
-pnpm run dev
+Prerequisites
 
-# yarn
-yarn dev
+- Node.js and npm (or yarn) installed on your machine.
+  Installation Steps
 
-# bun
-bun run dev
-```
+1. Clone the repository:
 
-## Production
+   `git clone https://github.com/your-username/echarts-nuxt-dashboard.git
+cd echarts-nuxt-dashboard
+`
 
-Build the application for production:
+2. Install dependencies:
 
-```bash
-# npm
-npm run build
+   `npm install`
 
-# pnpm
-pnpm run build
+3. Run the development server:
 
-# yarn
-yarn build
+   `npm run dev
+`
 
-# bun
-bun run build
-```
+4. Open the app in your browser:
 
-Locally preview production build:
+Navigate to http://localhost:3000 to view the project in your browser.
 
-```bash
-# npm
-npm run preview
+## 📈 Key Components
 
-# pnpm
-pnpm run preview
+- Statistics.vue: Handles the rendering of the bar chart, the circular average score chart, and the card layout for the reasons and proposals.
+- ECharts: Used for generating the bar chart and circular chart to visualize the data.
 
-# yarn
-yarn preview
+## 📝 License
 
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+This project is licensed under the MIT License.
