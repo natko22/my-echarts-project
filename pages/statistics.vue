@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Statistics</h1>
+    <h1>Statistics Dashboard</h1>
+    <Statistics />
   </div>
 </template>
 
