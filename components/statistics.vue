@@ -6,28 +6,31 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import * as echarts from "echarts";
 
-// onMounted: This lifecycle hook runs after the component is mounted to the DOM
-onMounted(() => {
-  const chartDom = document.getElementById("chart"); // Get the chart container
-  const myChart = echarts.init(chartDom); // Initialize ECharts
+// Import the JSON data directly from the assets folder
+import statisticsData from "~/assets/statistics.json";
 
+// Reactive variable to hold the JSON data
+const criteria = ref(statisticsData.criteria); // Directly assign data from JSON
+
+// Function to initialize the chart with the imported data
+function initializeChart() {
+  const chartDom = document.getElementById("chart"); // Get the chart DOM element
+  const myChart = echarts.init(chartDom); // Initialize ECharts instance
+
+  // Prepare dataset by mapping the score and name from the JSON data
+  const dataset = criteria.value.map((item) => [
+    item.score,
+    item.score,
+    item.name,
+  ]);
+
+  // ECharts options for the bar chart
   const option = {
     dataset: {
-      source: [
-        ["score", "amount", "product"],
-        [89.3, 58212, "Matcha Latte"],
-        [57.1, 78254, "Milk Tea"],
-        [74.4, 41032, "Cheese Cocoa"],
-        [50.1, 12755, "Cheese Brownie"],
-        [89.7, 20145, "Matcha Cocoa"],
-        [68.1, 79146, "Tea"],
-        [19.6, 91852, "Orange Juice"],
-        [10.6, 101852, "Lemon Juice"],
-        [32.7, 20112, "Walnut Brownie"],
-      ],
+      source: [["score", "amount", "product"], ...dataset],
     },
     grid: { containLabel: true },
     xAxis: { name: "amount" },
@@ -38,7 +41,6 @@ onMounted(() => {
       min: 10,
       max: 100,
       text: ["High Score", "Low Score"],
-      // Map the score column to color
       dimension: 0,
       inRange: {
         color: ["#65B581", "#FFCE34", "#FD665F"],
@@ -48,17 +50,19 @@ onMounted(() => {
       {
         type: "bar",
         encode: {
-          // Map the "amount" column to X axis.
           x: "amount",
-          // Map the "product" column to Y axis
           y: "product",
         },
       },
     ],
   };
 
-  // Apply the options to the chart
-  myChart.setOption(option);
+  myChart.setOption(option); // Apply the options to the chart
+}
+
+// Initialize the chart when the component is mounted
+onMounted(() => {
+  initializeChart(); // Initialize the chart with the imported data
 });
 </script>
 
