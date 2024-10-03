@@ -9,6 +9,23 @@
       style="width: 200px; height: 200px; margin: 20px auto"
     ></div>
   </div>
+  <div>
+    <!-- Present reason and proposal for each criterion inside expandable/collapsible cards -->
+    <div v-for="(item, index) in criteria" :key="index" class="card">
+      <div
+        class="card-header"
+        @click="toggleCard(index)"
+        style="cursor: pointer"
+      >
+        <h3>{{ item.name }}</h3>
+      </div>
+      <!-- Conditional rendering of reason and proposal when the card is expanded -->
+      <div v-if="expandedIndex === index" class="card-body">
+        <p><strong>Reason:</strong> {{ item.reason }}</p>
+        <p><strong>Proposal:</strong> {{ item.proposal }}</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -71,7 +88,7 @@ function initializeChart() {
 // Function to initialize the circular average score chart
 function initializeAverageChart() {
   const totalScore = criteria.value.reduce((sum, item) => sum + item.score, 0); // Calculate total score
-  const averageScore = (totalScore / criteria.value.length).toFixed(2); // Calculate average score
+  const averageScore = totalScore / criteria.value.length; // Calculate average score
 
   const chartDom = document.getElementById("average");
   const myChart = echarts.init(chartDom);
@@ -119,8 +136,37 @@ onMounted(() => {
   initializeChart(); // Initialize the bar chart with the imported data
   initializeAverageChart(); // Initialize the average score circular chart
 });
+
+// Reactive variable to track which card is expanded (initialized as null)
+const expandedIndex = ref(null);
+
+// Function to toggle the visibility of the card body
+function toggleCard(index) {
+  // If the clicked card is already expanded, collapse it, otherwise expand it
+  expandedIndex.value = expandedIndex.value === index ? null : index;
+}
 </script>
 
 <style scoped>
-/* Add any custom styling here if needed */
+.card {
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-width: 600px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 8px 8px 0 0;
+  font-size: 18px;
+}
+
+.card-body {
+  padding: 10px;
+  font-size: 16px;
+}
 </style>
