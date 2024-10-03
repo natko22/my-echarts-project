@@ -1,4 +1,6 @@
 <template>
+  <!-- Back to home button -->
+  <nuxt-link to="/" class="back-btn"> ← </nuxt-link>
   <div>
     <!-- Render the ECharts bar chart -->
     <div id="chart" style="width: 100%; height: 400px"></div>
@@ -181,5 +183,24 @@ function toggleCard(index) {
   padding: 10px;
   font-size: 16px;
   font-family: "Courier New", Courier, monospace;
+}
+
+/* Back button styling */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.25rem;
+  color: #ffce34;
+  text-decoration: none;
+  border: 2px solid #ffce34;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #ffce34;
+  color: white;
 }
 </style>
