@@ -55,6 +55,10 @@ Navigate to http://localhost:3000 to view the project in your browser.
 - Statistics.vue: Handles the rendering of the bar chart, the circular average score chart, and the card layout for the reasons and proposals.
 - ECharts: Used for generating the bar chart and circular chart to visualize the data.
 
+## 🚀 Live Demo
+
+**[Live Demo Here](https://charts-project.netlify.app/)**
+
 ## 📝 License
 
 This project is licensed under the MIT License.
