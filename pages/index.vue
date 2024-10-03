@@ -5,6 +5,4 @@
   </div>
 </template>
 
-<script setup>
-// No script needed for a simple home page
-</script>
+<script setup></script>
